@@ -65,7 +65,6 @@ function App() {
                             <p className="text-5xl font-mono font-bold text-white">
                                 {minuteSecondFormat(timer)}
                             </p>
-                            <p className="text-lg text-gray-400 mt-1">seconds</p>
                         </div>
 
                         <button
@@ -74,14 +73,14 @@ function App() {
                                 hover:scale-102 active:scale-98 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent
                             ${
                                 currentPhase === "Phase 1"
-                                    ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
+                                    ? "bg-emerald-600/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
                                     : "bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-600 hover:to-indigo-600 text-white shadow-lg shadow-blue-400/25 focus:ring-cyan-400"
                             }`}
                             disabled={currentPhase === "Phase 1"}
                         >
                             <span className="relative z-10">Start</span>
                             {currentPhase === "Phase 1" && (
-                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-75 animate-pulse"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-300 to-teal-300 opacity-75 animate-pulse"></div>
                             )}
                         </button>
 
@@ -97,7 +96,7 @@ function App() {
                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent
                                 ${
                                     currentPhase === "Phase 1 Closing"
-                                        ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
+                                        ? "bg-emerald-600/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
                                         : "bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white shadow-lg shadow-indigo-500/25 focus:ring-indigo-400"
                                 }
                             `}
@@ -105,7 +104,7 @@ function App() {
                             >
                                 <span className="relative z-10">P1 Closing</span>
                                 {currentPhase === "Phase 1 Closing" && (
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-75 animate-pulse"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-300 to-teal-300 opacity-75 animate-pulse"></div>
                                 )}
                             </button>
 
@@ -118,7 +117,7 @@ function App() {
                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent
                                 ${
                                     currentPhase === "Phase 2"
-                                        ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
+                                        ? "bg-emerald-600/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
                                         : "bg-gradient-to-r from-violet-500 to-pink-500 hover:from-violet-600 hover:to-pink-700 text-white shadow-lg shadow-violet-500/25 focus:ring-violet-400"
                                 }
                             `}
@@ -126,7 +125,7 @@ function App() {
                             >
                                 <span className="relative z-10">Phase 2</span>
                                 {currentPhase === "Phase 2" && (
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-75 animate-pulse"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-300 to-teal-300 opacity-75 animate-pulse"></div>
                                 )}
                             </button>
 
@@ -139,7 +138,7 @@ function App() {
                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent
                                 ${
                                     currentPhase === "Phase 2 Closing"
-                                        ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
+                                        ? "bg-emerald-600/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
                                         : "bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white shadow-lg shadow-pink-500/25 focus:ring-pink-400"
                                 }
                             `}
@@ -147,7 +146,7 @@ function App() {
                             >
                                 <span className="relative z-10">P2 Closing</span>
                                 {currentPhase === "Phase 2 Closing" && (
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-75 animate-pulse"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-300 to-teal-300 opacity-75 animate-pulse"></div>
                                 )}
                             </button>
                         </div>
