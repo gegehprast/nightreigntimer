@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 
-const PHASE_1_DURATION = 68 // 4 minutes 30 seconds
-const PHASE_1_CLOSING_DURATION = 68 // 3 minutes
-const PHASE_2_DURATION = 68 // 3 minutes 30 seconds
-const PHASE_2_CLOSING_DURATION = 68 // 3 minutes
+const PHASE_1_DURATION = 270 // 4 minutes 30 seconds
+const PHASE_1_CLOSING_DURATION = 180 // 3 minutes
+const PHASE_2_DURATION = 210 // 3 minutes 30 seconds
+const PHASE_2_CLOSING_DURATION = 180 // 3 minutes
 
 // const PHASE_1_DURATION = 5
 // const PHASE_1_CLOSING_DURATION = 3
