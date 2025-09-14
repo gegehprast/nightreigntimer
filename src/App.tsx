@@ -7,7 +7,7 @@ function minuteSecondFormat(totalSeconds: number): string {
 }
 
 function App() {
-    const { timer, currentPhase, start } = useTimer()
+    const { timer, currentPhase, start, isMelinaMuted, muteMelina, unmuteMelina } = useTimer()
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex flex-col">
@@ -133,10 +133,20 @@ function App() {
 
             {/* Static Footer */}
             <footer className="bg-black/20 backdrop-blur-sm border-t border-white/10 py-4 px-6">
-                <div className="max-w-lg mx-auto text-center">
+                <div className="max-w-xl mx-auto text-center">
                     <p className="text-gray-500 text-xs mt-1">
-                        By using this timer, you agree to NOT have your data collected. Source code
-                        on{" "}
+                        Melina shall {isMelinaMuted ? "not" : ""} notify thou 1 minute ere the storm
+                        is about to start closing.{" "}
+                        <button
+                            onClick={isMelinaMuted ? unmuteMelina : muteMelina}
+                            className="underline hover:text-white"
+                        >
+                            {isMelinaMuted ? "Unmute Melina" : "Mute Melina"}
+                        </button>
+                    </p>
+                    <p className="text-gray-500 text-xs mt-1">
+                        By using this timer, thou hit together to not hast thy data collected.
+                        Source code on{" "}
                         <a
                             href="https://github.com/gegehprast/nightreigntimer"
                             target="_blank"

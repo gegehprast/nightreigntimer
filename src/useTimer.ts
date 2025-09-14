@@ -17,6 +17,7 @@ melinaNotif.volume = 1.0
 melinaNotif.load()
 
 const useTimer = () => {
+    const [isMelinaMuted, setIsMelinaMuted] = useState(false)
     const [timer, setTimer] = useState(PHASE_1_DURATION)
     const [currentPhase, setCurrentPhase] = useState<Phase | null>(null)
     const intervalRef = useRef<number | null>(null)
@@ -96,6 +97,16 @@ const useTimer = () => {
         startPhase(phase)
     }
 
+    function muteMelina() {
+        melinaNotif.muted = true
+        setIsMelinaMuted(true)
+    }
+
+    function unmuteMelina() {
+        melinaNotif.muted = false
+        setIsMelinaMuted(false)
+    }
+
     useEffect(() => {
         return () => {
             if (intervalRef.current) {
@@ -104,7 +115,7 @@ const useTimer = () => {
         }
     }, [])
 
-    return { timer, currentPhase, start }
+    return { timer, currentPhase, start, isMelinaMuted, muteMelina, unmuteMelina }
 }
 
 export default useTimer
