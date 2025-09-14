@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import useTimer from "./useTimer"
 
 function minuteSecondFormat(totalSeconds: number): string {
@@ -6,8 +7,41 @@ function minuteSecondFormat(totalSeconds: number): string {
     return `${minutes}:${seconds.toString().padStart(2, "0")}`
 }
 
+let wakeLock: WakeLockSentinel | null = null
+
+async function requestWakeLock() {
+    // Check if the Wake Lock API is available
+    if ("wakeLock" in navigator) {
+        try {
+            wakeLock = await navigator.wakeLock.request("screen") // Request a screen wake lock
+            console.log("Screen wake lock acquired")
+        } catch (err) {
+            // Handle errors, e.g., if the lock couldn't be acquired
+            console.error(`${(err as Error).name}, ${(err as Error).message}`)
+        }
+    } else {
+        console.log("Wake Lock API not supported on this browser.")
+    }
+}
+
+async function releaseWakeLock() {
+    if (wakeLock) {
+        await wakeLock.release()
+        console.log("Screen wake lock released")
+        wakeLock = null
+    }
+}
+
 function App() {
     const { timer, currentPhase, start, isMelinaMuted, muteMelina, unmuteMelina } = useTimer()
+
+    requestWakeLock()
+
+    useEffect(() => {
+        return () => {
+            releaseWakeLock()
+        }
+    }, [])
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex flex-col">
