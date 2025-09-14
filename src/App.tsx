@@ -68,27 +68,25 @@ function App() {
                             <p className="text-lg text-gray-400 mt-1">seconds</p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3">
+                        <button
+                            onClick={() => start("Phase 1")}
+                            className={`w-full relative overflow-hidden font-bold py-3 px-6 rounded-lg transition-all duration-300 transform 
+                                hover:scale-102 active:scale-98 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent
+                            ${
+                                currentPhase === "Phase 1"
+                                    ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
+                                    : "bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-600 hover:to-indigo-600 text-white shadow-lg shadow-blue-400/25 focus:ring-cyan-400"
+                            }`}
+                            disabled={currentPhase === "Phase 1"}
+                        >
+                            <span className="relative z-10">Start</span>
+                            {currentPhase === "Phase 1" && (
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-75 animate-pulse"></div>
+                            )}
+                        </button>
+
+                        <div className="grid grid-cols-3 gap-3">
                             {/* start phase 1 */}
-                            <button
-                                onClick={() => start("Phase 1")}
-                                className={`
-                                relative overflow-hidden px-4 py-3 rounded-lg font-semibold text-sm
-                                transition-all duration-300 transform hover:scale-102 active:scale-98
-                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent
-                                ${
-                                    currentPhase === "Phase 1"
-                                        ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
-                                        : "bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/25 focus:ring-blue-400"
-                                }
-                            `}
-                                disabled={currentPhase === "Phase 1"}
-                            >
-                                <span className="relative z-10">Phase 1</span>
-                                {currentPhase === "Phase 1" && (
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-75 animate-pulse"></div>
-                                )}
-                            </button>
 
                             {/* start closing 1 */}
                             <button
@@ -100,7 +98,7 @@ function App() {
                                 ${
                                     currentPhase === "Phase 1 Closing"
                                         ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
-                                        : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white shadow-lg shadow-indigo-500/25 focus:ring-indigo-400"
+                                        : "bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white shadow-lg shadow-indigo-500/25 focus:ring-indigo-400"
                                 }
                             `}
                                 disabled={currentPhase === "Phase 1 Closing"}
@@ -121,7 +119,7 @@ function App() {
                                 ${
                                     currentPhase === "Phase 2"
                                         ? "bg-emerald-500/80 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400 cursor-not-allowed"
-                                        : "bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white shadow-lg shadow-violet-500/25 focus:ring-violet-400"
+                                        : "bg-gradient-to-r from-violet-500 to-pink-500 hover:from-violet-600 hover:to-pink-700 text-white shadow-lg shadow-violet-500/25 focus:ring-violet-400"
                                 }
                             `}
                                 disabled={currentPhase === "Phase 2"}
@@ -169,8 +167,8 @@ function App() {
             <footer className="bg-black/20 backdrop-blur-sm border-t border-white/10 py-4 px-6">
                 <div className="max-w-xl mx-auto text-center">
                     <p className="text-gray-500 text-xs mt-1">
-                        Melina shall {isMelinaMuted ? "not" : ""} notify thou 1 minute ere the storm
-                        is about to start closing.{" "}
+                        Melina shal {isMelinaMuted ? "not" : ""} notifye thee one minute bifore the
+                        storme beginneth to close.{" "}
                         <button
                             onClick={isMelinaMuted ? unmuteMelina : muteMelina}
                             className="underline hover:text-white"
@@ -179,7 +177,7 @@ function App() {
                         </button>
                     </p>
                     <p className="text-gray-500 text-xs mt-1">
-                        By using this timer, thou hit together to not hast thy data collected.
+                        By using this timer, thou agreest that thy data shal not be collected.
                         Source code on{" "}
                         <a
                             href="https://github.com/gegehprast/nightreigntimer"
