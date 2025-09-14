@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 
-const PHASE_1_DURATION = 270 // 4 minutes 30 seconds
-const PHASE_1_CLOSING_DURATION = 180 // 3 minutes
-const PHASE_2_DURATION = 210 // 3 minutes 30 seconds
-const PHASE_2_CLOSING_DURATION = 180 // 3 minutes
+const PHASE_1_DURATION = 68 // 4 minutes 30 seconds
+const PHASE_1_CLOSING_DURATION = 68 // 3 minutes
+const PHASE_2_DURATION = 68 // 3 minutes 30 seconds
+const PHASE_2_CLOSING_DURATION = 68 // 3 minutes
 
 // const PHASE_1_DURATION = 5
 // const PHASE_1_CLOSING_DURATION = 3
@@ -11,6 +11,10 @@ const PHASE_2_CLOSING_DURATION = 180 // 3 minutes
 // const PHASE_2_CLOSING_DURATION = 3
 
 export type Phase = "Phase 1" | "Phase 1 Closing" | "Phase 2" | "Phase 2 Closing"
+
+const melinaNotif = new Audio("/melina-tts-file.wav")
+melinaNotif.volume = 1.0
+melinaNotif.load()
 
 const useTimer = () => {
     const [timer, setTimer] = useState(PHASE_1_DURATION)
@@ -59,6 +63,13 @@ const useTimer = () => {
 
         intervalRef.current = setInterval(() => {
             setTimer((prev) => {
+                // when 60 seconds left on a timer, play audio
+                if (["Phase 1", "Phase 2"].includes(phase) && prev === 63) {
+                    melinaNotif.play().catch((e) => {
+                        console.error("Failed to play audio:", e)
+                    })
+                }
+
                 if (prev <= 1) {
                     // Timer reached 0, check for next phase
                     const nextPhase = getNextPhase(phase)

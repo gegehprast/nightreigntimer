@@ -1,5 +1,11 @@
 import useTimer from "./useTimer"
 
+function minuteSecondFormat(totalSeconds: number): string {
+    const minutes = Math.floor(totalSeconds / 60)
+    const seconds = totalSeconds % 60
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`
+}
+
 function App() {
     const { timer, currentPhase, start } = useTimer()
 
@@ -22,7 +28,9 @@ function App() {
                             <p className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
                                 Time Remaining
                             </p>
-                            <p className="text-5xl font-mono font-bold text-white">{timer}</p>
+                            <p className="text-5xl font-mono font-bold text-white">
+                                {minuteSecondFormat(timer)}
+                            </p>
                             <p className="text-lg text-gray-400 mt-1">seconds</p>
                         </div>
 
@@ -127,7 +135,8 @@ function App() {
             <footer className="bg-black/20 backdrop-blur-sm border-t border-white/10 py-4 px-6">
                 <div className="max-w-lg mx-auto text-center">
                     <p className="text-gray-500 text-xs mt-1">
-                        By using this timer, you agree to NOT have your data collected. Source code on{" "}
+                        By using this timer, you agree to NOT have your data collected. Source code
+                        on{" "}
                         <a
                             href="https://github.com/gegehprast/nightreigntimer"
                             target="_blank"
